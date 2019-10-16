@@ -1,0 +1,21 @@
+spring:
+    data:
+        rest: 
+            base-path: /api
+    application:
+        name: Catalog-Service
+    cloud:
+        gcp:
+            sql:
+                database-name: marketplace
+                instance-connection-name: perceptive-day-252709:us-central1:mysql-container
+    datasource:
+        password: tpm1234
+        username: root
+        schema: classpath:/schema.sql
+        initialization-mode: always
+    jpa:
+        database-platform: org.hibernate.dialect.MySQL57Dialect
+        hibernate:
+            ddl-auto: create
+        show-sql: true
