@@ -8,4 +8,4 @@ handlers:
 - url: /.*
   script: this field is required, but ignored
 manual_scaling: 
-  instances: 1
+  instances: 2
