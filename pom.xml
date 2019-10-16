@@ -123,11 +123,14 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 			<plugin>
-				<groupId>com.google.cloud.tools</groupId>
+				<groupId>com.google.appengine</groupId>
 				<artifactId>appengine-maven-plugin</artifactId>
-				<version>1.3.2</version>
+				<version>1.3.1</version>
 				<configuration>
 					<version>1</version>
+					<project>perceptive-day-252709</project>
+					<deploy.promote>true</deploy.promote>
+					<deploy.stopPreviousVersion>true</deploy.stopPreviousVersion>
 				</configuration>
 			</plugin>
 		</plugins>
