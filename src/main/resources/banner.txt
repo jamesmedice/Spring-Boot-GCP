@@ -39,7 +39,9 @@ ${AnsiColor.BRIGHT_BLUE}:: TIAGO MEDICE 🤓  :: Running Spring Boot ${spring-bo
 ████████║
 ╚═══════╝
 
+
 ${AnsiColor.BRIGHT_BLUE}:: TIAGO MEDICE 🤓  :: Running Spring Boot ${spring-boot.version} :: ${AnsiColor.DEFAULT}
+
 	
  █████████████████
  █████████████████     
@@ -105,6 +107,4 @@ ${AnsiColor.BRIGHT_BLUE}:: TIAGO MEDICE 🤓  :: Running Spring Boot ${spring-bo
  ██             ██
  █████████████████ 
  █████████████████
-   
-
-${AnsiColor.BRIGHT_BLUE}:: TIAGO MEDICE 🤓  :: Running Spring Boot ${spring-boot.version} ::${AnsiColor.DEFAULT}
+ 
