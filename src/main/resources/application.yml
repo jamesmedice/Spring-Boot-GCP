@@ -1,3 +1,4 @@
+#set up properties
 spring:
     data:
         rest: 
@@ -6,6 +7,9 @@ spring:
         name: Catalog-Service
     cloud:
         gcp:
+            project-id: perceptive-day-252709
+            credentials:
+                location: classpath:key.json
             sql:
                 enabled: true
                 database-type: mysql
