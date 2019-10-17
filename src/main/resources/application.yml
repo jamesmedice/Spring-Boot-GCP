@@ -7,6 +7,8 @@ spring:
     cloud:
         gcp:
             sql:
+                enabled: true
+                database-type: mysql
                 database-name: marketplace
                 instance-connection-name: perceptive-day-252709:us-central1:mysql-container
     datasource:
@@ -14,8 +16,3 @@ spring:
         username: root
         schema: classpath:/schema.sql
         initialization-mode: always
-    jpa:
-        database-platform: org.hibernate.dialect.MySQL57Dialect
-        hibernate:
-            ddl-auto: create
-        show-sql: true
