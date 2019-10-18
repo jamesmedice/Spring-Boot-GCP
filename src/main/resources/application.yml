@@ -1,11 +1,27 @@
 #set up properties
+management:
+    endpoint:
+        restart:
+            enabled: true
+
 spring:
     data:
         rest: 
             base-path: /api
     application:
-        name: Catalog-Service
+        name: Invoice-Service
     cloud:
+        kubernetes:
+            enabled: true
+            reload:
+                enabled: true
+            config:
+                enableApi: true
+                enabled: true
+            secrets:
+                name: mysqlcontainer
+                enabled: true
+                enableApi: true
         gcp:
             project-id: perceptive-day-252709
             credentials:
@@ -16,7 +32,7 @@ spring:
                 database-name: marketplace
                 instance-connection-name: perceptive-day-252709:us-central1:mysql-container
     datasource:
-        password: tpm1234
-        username: root
+        password: ${SECRETS_PASSWORD:tpm1234}
+        username: ${SECRETS_USER:root}
         schema: classpath:/schema.sql
         initialization-mode: always
