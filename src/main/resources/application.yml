@@ -12,7 +12,6 @@ spring:
         name: Invoice-Service
     cloud:
         kubernetes:
-            enabled: true
             reload:
                 enabled: true
             config:
