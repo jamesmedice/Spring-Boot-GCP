@@ -16,6 +16,7 @@ spec:
     spec:
       containers:
         - name: back-end
+          image: back-end
         - env:
           - name: SECRETS_USER
             valueFrom:
