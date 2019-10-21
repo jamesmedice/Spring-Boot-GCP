@@ -1,8 +1,12 @@
 apiVersion: apps/v1
 kind: Deployment
-type: Opaque
+metadata:
+  name: app-deployment
 spec:
   template:
+    metadata:
+      labels:
+        app: app-deployment
     spec:
       containers:
         - env:
