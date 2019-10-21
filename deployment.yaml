@@ -1,23 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: app-deployment
+  name: mysql
   labels:
-    app: app-deployment
+    app: mysql
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: app-deployment
+      app: mysql
   template:
     metadata:
       labels:
-        app: app-deployment
+        app: mysql
     spec:
       containers:
-        - name: back-end
-          image: back-end
-        - env:
+        - name: mysql
+          image: mysql:5.7
+          env:
           - name: SECRETS_USER
             valueFrom:
               secretKeyRef:
