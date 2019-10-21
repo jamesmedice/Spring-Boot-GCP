@@ -15,8 +15,8 @@ spec:
         app: app-deployment
     spec:
       containers:
-        - name: back-end
-        - env:
+        name: back-end
+        env:
           - name: SECRETS_USER
             valueFrom:
               secretKeyRef:
