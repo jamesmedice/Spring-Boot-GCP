@@ -9,7 +9,7 @@ spring:
         rest: 
             base-path: /api
     application:
-        name: Invoice-Service
+        name: Invoice
     cloud:
         kubernetes:
             reload:

@@ -1,11 +1,11 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: ${project.artifactId}
+  name: Invoice
 spec:
   selector:
     matchLabels:
-      app: apps
+      app: Invoice
   template:
     spec:
       containers:
