@@ -6,7 +6,10 @@ spec:
   selector:
     matchLabels:
       app: invoice
-  template:
+  template:    
+    metadata:
+      labels:
+        app: invoice
     spec:
       containers:
         - name: mysql-container
