@@ -6,6 +6,8 @@ spec:
   template:
     spec:
       containers:
+        - name: mysql-container
+        - image: gcr.io/perceptive-day-252709/mysql-container
         - env:
           - name: SECRETS_USER
             valueFrom:
