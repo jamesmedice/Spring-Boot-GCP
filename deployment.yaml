@@ -5,7 +5,7 @@ metadata:
 spec:
   selector:
     matchLabels:
-      app: ${project.artifactId}
+      app: apps
   template:
     spec:
       containers:
