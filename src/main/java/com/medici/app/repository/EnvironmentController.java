@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RestController;
  *
  */
 @RestController
-@RequestMapping("/api")
 public class EnvironmentController {
 
 	protected Logger logger = Logger.getLogger(EnvironmentController.class.getName());
