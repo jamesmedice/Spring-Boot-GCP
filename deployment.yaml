@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: secret-env
+spec:
+  containers:
+  - name: mycontainer
+    image: redis
+    env:
+      - name: SECRETS_USER
+        valueFrom:
+          secretKeyRef:
+            name: mysqlcontainer
+            key: username
+      - name: SECRETS_PASSWORD
+        valueFrom:
+          secretKeyRef:
+            name: mysqlcontainer
+            key: password
+  restartPolicy: Never
