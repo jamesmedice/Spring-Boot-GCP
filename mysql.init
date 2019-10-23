@@ -1,2 +1,0 @@
-#!/bin/bash
-kubectl create secret generic mysqlcontainer --from-literal=username=root --from-literal=password=tpm1234
