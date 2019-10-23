@@ -31,7 +31,7 @@ spring:
                 database-name: marketplace
                 instance-connection-name: perceptive-day-252709:us-central1:mysql-container
     datasource:
-        password: ${SECRETS_PASSWORD}
-        username: ${SECRETS_USER}
+        password: ${SECRETS_PASSWORD:tpm1234}
+        username: ${SECRETS_USER:james}
         schema: classpath:/schema.sql
         initialization-mode: always

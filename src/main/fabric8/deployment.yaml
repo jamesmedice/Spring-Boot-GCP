@@ -1,20 +1,8 @@
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: invoice
 spec:
-  selector:
-    matchLabels:
-      app: invoice
-  template:    
-    metadata:
-      labels:
-        app: invoice
+  template:
     spec:
       containers:
-        - name: mysql-container
-          image: gcr.io/perceptive-day-252709/mysql-container
-          env:
+        - env:
           - name: SECRETS_USER
             valueFrom:
               secretKeyRef:
