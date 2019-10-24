@@ -4,7 +4,9 @@ import java.util.Map;
 import java.util.logging.Logger;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.AbstractEnvironment;
 import org.springframework.core.env.Environment;
+import org.springframework.core.env.MutablePropertySources;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -21,6 +23,11 @@ public class EnvironmentController {
 
 	@Autowired
 	Environment environment;
+
+	@RequestMapping(value = "/allVars", method = RequestMethod.GET)
+	public MutablePropertySources allVars() {
+		return ((AbstractEnvironment) environment).getPropertySources();
+	}
 
 	@RequestMapping(value = "/envVars", method = RequestMethod.GET)
 	public Map<String, String> envVars() {
