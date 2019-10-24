@@ -1,4 +1,6 @@
 runtime: java
+runtime_config:
+  jdk: openjdk8 # use OpenJDK 8
 env: flex
 api_version: 1
 threadsafe: yes
