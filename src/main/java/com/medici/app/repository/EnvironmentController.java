@@ -27,8 +27,18 @@ public class EnvironmentController {
 	@Autowired
 	Environment environment;
 
-	@RequestMapping(value = "/allVars", method = RequestMethod.GET)
-	public Map<String, Object> allVars() {
+	@RequestMapping(value = "/systemProperties", method = RequestMethod.GET)
+	public Map<String, Object> systemProperties() {
+		return ((AbstractEnvironment) environment).getSystemProperties();
+	}
+
+	@RequestMapping(value = "/systemEnvironment", method = RequestMethod.GET)
+	public Map<String, Object> systemEnvironment() {
+		return ((AbstractEnvironment) environment).getSystemEnvironment();
+	}
+
+	@RequestMapping(value = "/propertySources", method = RequestMethod.GET)
+	public Map<String, Object> propertySources() {
 		Map<String, Object> map = new HashMap();
 		for (Iterator it = ((AbstractEnvironment) environment).getPropertySources().iterator(); it.hasNext();) {
 			PropertySource propertySource = (PropertySource) it.next();
@@ -40,8 +50,8 @@ public class EnvironmentController {
 		return map;
 	}
 
-	@RequestMapping(value = "/envVars", method = RequestMethod.GET)
-	public Map<String, String> envVars() {
+	@RequestMapping(value = "/env", method = RequestMethod.GET)
+	public Map<String, String> env() {
 		logger.info("microservice envVars() invoked");
 		return System.getenv();
 	}
