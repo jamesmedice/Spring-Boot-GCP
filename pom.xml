@@ -123,6 +123,9 @@
 				<artifactId>appengine-maven-plugin</artifactId>
 				<version>2.0.0</version>
 				<configuration>
+					<project>
+						perceptive-day-252709
+					</project>
 					<extraFilesDirectories>
 						<extraFilesDirectory>src/main/appengine/app.yaml</extraFilesDirectory>
 					</extraFilesDirectories>
