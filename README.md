@@ -1,5 +1,11 @@
 # Spring vs GCP
 
+gcloud config set project [PROJECT_ID]
+
+clone the repo !!!
+
+
+
 
 run the script ./create 
 
