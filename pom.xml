@@ -130,6 +130,8 @@
 					<extraFilesDirectories>
 						<extraFilesDirectory>src/main/appengine/app.yaml</extraFilesDirectory>
 					</extraFilesDirectories>
+					<devserver.host>0.0.0.0</devserver.host>
+					<devserver.port>8181</devserver.port>
 				</configuration>
 				<executions>
 					<execution>

@@ -55,3 +55,9 @@ mvn spring-boot:run -Dspring.cloud.kubernetes.secrets.paths=/api/v1/namespaces/d
 mvn spring-boot:run -Dspring.cloud.kubernetes.secrets.name=mysqlcontainer
 
 mvn clean package appengine:deploy
+
+mvn appengine:devserver
+
+mvn appengine:run
+
+mvn appengine:deploy
