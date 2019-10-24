@@ -1,5 +1,8 @@
 runtime: java
 env: flex
+api_version: 1
+threadsafe: yes
+service: default
 
 handlers:
 - url: /.*

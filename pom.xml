@@ -5,7 +5,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.medici</groupId>
-	<artifactId>Catalog-Service</artifactId>
+	<artifactId>catalogservice</artifactId>
 	<version>0.0.1</version>
 	<packaging>war</packaging>
 
@@ -123,7 +123,6 @@
 				<artifactId>appengine-maven-plugin</artifactId>
 				<version>2.0.0</version>
 				<configuration>
-					<deploy.version>1</deploy.version>
 					<projectId>
 						perceptive-day-252709
 					</projectId>
