@@ -4,6 +4,7 @@ gcloud config set project [PROJECT_ID]
 
 clone the repo !!!
 
+tiago_sllater@cloudshell:~/Spring-Boot-GCP (perceptive-day-252709)$ gcloud app deploy ./src/main/appengine/app.yaml
 
 
 
