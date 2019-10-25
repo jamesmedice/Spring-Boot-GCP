@@ -4,7 +4,7 @@ metadata:
   name: secret-env
 spec:
   containers:
-  - name: mycontainer
+  - name: secretcontainer
     image: redis
     env:
       - name: SECRETS_USER
