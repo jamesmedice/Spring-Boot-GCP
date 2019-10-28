@@ -5,7 +5,7 @@ metadata:
 spec:
   containers:
   - name: secretcontainer
-    image: redis
+    image: gcr.io/perceptive-day-252709/Spring-Boot-GCP
     env:
       - name: SECRETS_USER
         valueFrom:
