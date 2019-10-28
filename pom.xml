@@ -45,7 +45,6 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
-
 		</dependency>
 
 		<dependency>
@@ -138,19 +137,6 @@
 						<phase>deploy</phase>
 						<goals>
 							<goal>deploy</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
-				<groupId>io.fabric8</groupId>
-				<artifactId>fabric8-maven-plugin</artifactId>
-				<version>3.1.32</version>
-				<executions>
-					<execution>
-						<goals>
-							<goal>resource</goal>
-							<goal>build</goal>
 						</goals>
 					</execution>
 				</executions>

@@ -1,5 +1,7 @@
 # Spring vs GCP
 
+cluster info :  gcloud container clusters get-credentials  spring-boot-cluster  --zone europe-north1-a
+
 gcloud config set project [PROJECT_ID]
 
 clone the repo !!!
