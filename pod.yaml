@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: secret-env
+  name: secretenv
 spec:
   containers:
-  - name: mycontainer
+  - name: secretcontainer
     image: redis
     env:
       - name: SECRETS_USER
