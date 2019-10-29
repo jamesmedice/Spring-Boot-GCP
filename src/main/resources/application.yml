@@ -1,5 +1,7 @@
 #set up properties
 management:
+    security:
+        enabled: false
     endpoint:
         restart:
             enabled: true
