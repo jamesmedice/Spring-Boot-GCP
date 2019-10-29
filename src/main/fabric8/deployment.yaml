@@ -1,0 +1,29 @@
+spec:
+  template:
+    spec:
+      containers:
+      - env:
+        - name: SPRING_PROFILES_ACTIVE
+          value: mysql
+        - name: SECRETS_USER
+          valueFrom:
+            secretKeyRef:
+              name: mysqlcontainer
+              key: username
+        - name: SECRETS_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: mysqlcontainer
+              key: password
+        livenessProbe:
+          httpGet:
+            path: /actuator/health
+            port: 8080
+            scheme: HTTP
+          initialDelaySeconds: 180
+        readinessProbe:
+          httpGet:
+            path: /actuator/health
+            port: 8080
+            scheme: HTTP
+          initialDelaySeconds: 20
