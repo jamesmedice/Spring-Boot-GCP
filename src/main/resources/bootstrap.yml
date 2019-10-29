@@ -11,7 +11,7 @@ spring:
             config:
                 enableApi: true
                 enabled: true
-                name: secretenv
+                name: catalogservice
                 namespace: default
                 sources:
                  - name: secretenv
