@@ -127,6 +127,8 @@
 					<execution>
 						<id>fmp</id>
 						<goals>
+							<goal>run</goal>
+							<goal>deploy</goal>
 							<goal>resource</goal>
 							<goal>build</goal>
 						</goals>
