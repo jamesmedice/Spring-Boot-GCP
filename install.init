@@ -4,6 +4,7 @@ kubectl create secret generic mysqlcontainer --from-literal=username=james --fro
 kubectl get secret  mysqlcontainer -o yaml > secret.yaml
 kubectl apply  -f  secret.yaml
 kubectl apply  -f  pod.yaml
+kubectl apply  -f  configmap.yaml
 
 kubectl patch serviceaccount  default -p '{"imagePullSecrets": [{"name": "mysqlcontainer"}]}'
 kubectl get   serviceaccounts default -o yaml > serviceaccounts.yaml
