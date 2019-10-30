@@ -10,7 +10,7 @@ spec:
       secretName: mysqlcontainer
   containers:
   - name: secretcontainer
-    image: spring-boot-gcg
+    image: springbootgcg
     env:
       - name: SECRETS_USER
         valueFrom:
