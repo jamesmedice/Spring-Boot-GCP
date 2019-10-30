@@ -1,6 +1,9 @@
 #!/bin/bash
 kubectl delete deployment catalogservice 
 kubectl delete secret mysqlcontainer
-kubectl delete -f pod.yaml
+
+kubectl delete -f configmap.yaml
+kubectl delete -f deployment.yaml
+
 kubectl delete svc catalogservice
 rm secret.yaml
