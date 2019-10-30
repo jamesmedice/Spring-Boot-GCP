@@ -18,8 +18,7 @@ spring:
                 sources:
                  - name: secretenv
             secrets:
-                enabled: true
-                enableApi: true
+                name: mysqlcontainer
         gcp:
             project-id: perceptive-day-252709
             credentials:
