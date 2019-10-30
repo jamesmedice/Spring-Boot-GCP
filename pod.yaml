@@ -3,7 +3,7 @@ kind: Pod
 metadata:
   name: secretenv
 spec:
-  serviceAccount: mysql-container
+  serviceAccount: default
   volumes:
   - name: secretvolume
     secret:
