@@ -1,7 +1,0 @@
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: secretmap
-data: 
-  SECRETS_USER: james
-  SECRETS_PASSWORD: tpm1234
