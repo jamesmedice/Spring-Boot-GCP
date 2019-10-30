@@ -11,7 +11,7 @@ spring:
         rest: 
             base-path: /api
     application:
-        name: invoice
+        name: catalogservice
     datasource:
         password: ${SECRETS_PASSWORD:tpm1234}
         username: ${SECRETS_USER:james}
