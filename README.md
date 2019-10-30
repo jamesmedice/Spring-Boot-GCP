@@ -1,5 +1,17 @@
 # Spring vs GCP
 
+
+generate api key 
+gcloud auth application-default login
+
+
+Credentials saved to file: [/tmp/tmp.dG9nLliG41/application_default_credentials.json]
+
+
+
+
+
+
 cluster info :  gcloud container clusters get-credentials  spring-boot-cluster  --zone europe-north1-a
 
 gcloud config set project [PROJECT_ID]
