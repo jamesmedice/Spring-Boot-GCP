@@ -1,6 +1,8 @@
 spring:
     cloud:
         config:
+            namespace: default
+            enabled: true
             fail-fast: false 
             name: Cloud
             profile: dev, cloud, mysql
@@ -16,7 +18,6 @@ spring:
                 sources:
                  - name: secretenv
             secrets:
-                name: mysqlcontainer
                 enabled: true
                 enableApi: true
         gcp:
