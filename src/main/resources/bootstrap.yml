@@ -28,4 +28,4 @@ spring:
                 enabled: true
                 database-type: mysql
                 database-name: marketplace
-                instance-connection-name: perceptive-day-252709:us-central1:mysql-container       
+                instance-connection-name: perceptive-day-252709:us-central1:mysqlcontainer      
