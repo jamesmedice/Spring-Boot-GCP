@@ -19,6 +19,7 @@ spring:
                  - name: secretenv
             secrets:
                 name: mysqlcontainer
+                namespace: default
         gcp:
             project-id: perceptive-day-252709
             credentials:
