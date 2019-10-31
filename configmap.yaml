@@ -3,5 +3,10 @@ kind: ConfigMap
 metadata:
   name: invoice
 data:
-  database-name: marketplace
-  ENVIRONMENT_CONFIG: Docker
+  application.yml: |+
+    server:
+      port: 9000
+    datasource:
+      driverClassName: com.mysql.cj.jdbc.Driver
+      username: ${SECRETS_USER}
+      password: ${SECRETS_PASSWORD}

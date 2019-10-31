@@ -8,5 +8,4 @@ kubectl apply  -f  configmap.yaml
 kubectl apply  -f  pod.yaml
 
 kubectl patch serviceaccount  default -p '{"imagePullSecrets": [{"name": "mysqlcontainer"}]}'
-kubectl patch serviceaccount  default -p '{"imagePullSecrets": [{"name": "gcr-json-key"}]}'
 kubectl get   serviceaccounts default -o yaml > serviceaccounts.yaml
