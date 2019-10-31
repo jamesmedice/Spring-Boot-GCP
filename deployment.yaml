@@ -12,7 +12,8 @@ spec:
   template:
     spec:
       containers:
-        name: invoice
+      - name: invoice
+        image: gcr.io/perceptive-day-252709/Spring-Boot-GCP
       - env:
         - name: SPRING_PROFILES_ACTIVE
           value: mysql
