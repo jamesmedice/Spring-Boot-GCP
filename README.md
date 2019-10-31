@@ -75,3 +75,39 @@ mvn appengine:devserver
 mvn appengine:run
 
 mvn appengine:deploy
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////
+Follow the first 5 step given in this link
+
+https://cloud.google.com/sql/docs/mysql/connect-container-engine
+
+change database configuration in your application
+
+hostname: 127.0.0.1
+port: 3306 or your mysql port
+username: proxyuser
+
+should be same as link step - 3
+
+mvn package -Dmaven.test.skip=true
+Create File with name "Dockerfile" and below content
+
+FROM openjdk:8
+COPY target/SpringBootWithDB-0.0.1-SNAPSHOT.jar /app.jar
+EXPOSE 8080/tcp
+ENTRYPOINT ["java", "-jar", "/app.jar"]
+
+docker build -t gcr.io//springbootdb-java:v1 .
+
+docker run -ti --rm -p 8080:8080 gcr.io//springbootdb-java:v1
+
+gcloud docker -- push gcr.io//springbootdb-java:v1
+
+Follow the 6th step given in link and create yaml file
+
+kubectl create -f cloudsql_deployment.yaml
+
+run kubectl get deployment and copy name of deployment
+
+kubectl expose deployment --type=LoadBalancer
