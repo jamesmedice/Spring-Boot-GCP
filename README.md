@@ -98,6 +98,7 @@ COPY target/SpringBootWithDB-0.0.1-SNAPSHOT.jar /app.jar
 EXPOSE 8080/tcp
 ENTRYPOINT ["java", "-jar", "/app.jar"]
 
+docker build -t  gcr.io/perceptive-day-252709/springbootgcp:v1
 docker build -t gcr.io//springbootdb-java:v1 .
 
 docker run -ti --rm -p 8080:8080 gcr.io//springbootdb-java:v1
