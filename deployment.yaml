@@ -21,17 +21,3 @@ spec:
             secretKeyRef:
               name: mysqlcontainer
               key: password
-
-
-apiVersion: v1
-kind: Service
-metadata:
-  name: catalogservice
-  labels:
-    app: catalogservice
-spec:
-  ports:
-  - port: 9000
-    protocol: TCP
-  selector:
-    app: catalogservice

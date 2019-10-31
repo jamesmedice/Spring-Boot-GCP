@@ -1,6 +1,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: mysqlcontainer
+  name: invoice
 data:
   database-name: marketplace
+  ENVIRONMENT_CONFIG: Docker
