@@ -5,6 +5,10 @@ metadata:
   labels:
     app: mysqldb
 spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: demo
   template:
     spec:
       containers:
