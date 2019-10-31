@@ -5,5 +5,5 @@ WORKDIR /app
 RUN mvn clean install -DskipTests
 
 FROM openjdk:8-jre-alpine
-COPY --from=BUILD /target/*.jar  application.jar
+COPY --from=BUILD /app/target/*.jar  application.jar
 ENTRYPOINT ["java", "-jar", "-Dspring.profiles.active=dev", "/application.jar"]
