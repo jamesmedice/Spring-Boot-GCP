@@ -12,18 +12,19 @@ spec:
   template:
     spec:
       containers:
-      - name: invoice
-        image: gcr.io/perceptive-day-252709/Spring-Boot-GCP
-      - env:
-        - name: SPRING_PROFILES_ACTIVE
-          value: mysql
-        - name: SECRETS_USER
-          valueFrom:
-            secretKeyRef:
-              name: mysqlcontainer
-              key: username
-        - name: SECRETS_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              name: mysqlcontainer
-              key: password
+        - name: invoice
+          image: gcr.io/perceptive-day-252709/Spring-Boot-GCP
+          imagePullPolicy: Never
+          env:
+          - name: SPRING_PROFILES_ACTIVE
+            value: mysql
+          - name: SECRETS_USER
+            valueFrom:
+              secretKeyRef:
+                name: mysqlcontainer
+                key: username
+          - name: SECRETS_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: mysqlcontainer
+                key: password
