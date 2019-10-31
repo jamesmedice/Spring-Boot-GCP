@@ -6,7 +6,7 @@ VOLUME /tmp
  
 EXPOSE 8080
  
-ARG JAR_FILE=target/*.jar
+ARG JAR_FILE=target/catalogservice-0.0.1.jar
  
 ADD ${JAR_FILE} app.jar
  
