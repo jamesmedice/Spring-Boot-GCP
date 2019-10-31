@@ -17,7 +17,7 @@ spec:
       containers:
         - name: invoice
           image: gcr.io/perceptive-day-252709/spring-boot-gcp
-          imagePullPolicy: Never
+          imagePullPolicy: always
           env:
           - name: SPRING_PROFILES_ACTIVE
             value: mysql
