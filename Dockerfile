@@ -1,9 +1,13 @@
-FROM maven:3.5.2-jdk-8-alpine as BUILD
-COPY pom.xml /app/
-COPY src /app/src/
-WORKDIR /app
-RUN mvn clean install -DskipTests
-
-FROM openjdk:8-jre-alpine
-COPY --from=BUILD /app/target/*.jar  application.jar
-ENTRYPOINT ["java", "-jar", "-Dspring.profiles.active=dev", "/application.jar"]
+FROM openjdk:8u212-jdk-slim
+ 
+LABEL maintainer="tiago.sllater@gmail.com"
+ 
+VOLUME /tmp
+ 
+EXPOSE 8080
+ 
+ARG JAR_FILE=target/*.jar
+ 
+ADD ${JAR_FILE} app.jar
+ 
+ENTRYPOINT ["java","-jar","/app.jar"]
