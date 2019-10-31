@@ -6,5 +6,5 @@ kubectl delete -f configmap.yaml
 kubectl delete -f pod.yaml
 kubectl delete -f rbac.yaml
 
-kubectl delete svc catalogservice
+kubectl delete svc invoice
 rm secret.yaml
