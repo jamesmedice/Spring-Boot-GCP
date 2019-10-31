@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: invoice
-          image: gcr.io/perceptive-day-252709/Spring-Boot-GCP
+          image: gcr.io/perceptive-day-252709/spring-boot-gcp
           imagePullPolicy: Never
           env:
           - name: SPRING_PROFILES_ACTIVE
