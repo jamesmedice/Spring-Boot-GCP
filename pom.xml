@@ -9,7 +9,7 @@
 	<version>0.0.1</version>
 	<packaging>jar</packaging>
 
-	<name>catalogservice</name>
+	<name>invoice</name>
 	<description>Spring Boot</description>
 
 	<parent>
@@ -129,30 +129,6 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
-			<plugin>
-				<groupId>com.google.cloud.tools</groupId>
-				<artifactId>appengine-maven-plugin</artifactId>
-				<version>${appengine-maven-plugin}</version>
-				<configuration>
-					<deploy.version>1</deploy.version>
-					<projectId>
-						perceptive-day-252709
-					</projectId>
-					<extraFilesDirectories>
-						<extraFilesDirectory>src/main/appengine/app.yaml</extraFilesDirectory>
-					</extraFilesDirectories>
-					<devserver.host>0.0.0.0</devserver.host>
-					<devserver.port>8181</devserver.port>
-				</configuration>
-				<executions>
-					<execution>
-						<phase>deploy</phase>
-						<goals>
-							<goal>deploy</goal>
-						</goals>
-					</execution>
-				</executions>
 			</plugin>
 		</plugins>
 	</build>
