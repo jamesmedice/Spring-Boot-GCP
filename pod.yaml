@@ -10,7 +10,7 @@ spec:
       secretName: mysqlcontainer
   containers:
   - name: secretcontainer
-    image: redis
+    image: gcr.io/perceptive-day-252709/springbootgcp:latest
     env:
       - name: SECRETS_USER
         valueFrom:
