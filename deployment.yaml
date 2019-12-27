@@ -1,0 +1,28 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: app
+  labels:
+    app: app
+spec:
+  template:
+    metadata:
+      labels:
+        app: app
+    spec:
+      containers:
+        - name: app
+          image: gcr.io/qwiklabs-gcp-01f0cd088e25ac6d/app
+          ports:
+            - containerPort: 8080
+          env:
+      - name: SECRETS_USER
+        valueFrom:
+          secretKeyRef:
+            name: mysqlcontainer
+            key: username
+      - name: SECRETS_PASSWORD
+        valueFrom:
+          secretKeyRef:
+            name: mysqlcontainer
+            key: password
