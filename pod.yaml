@@ -3,14 +3,13 @@ kind: Pod
 metadata:
   name: secretenv
 spec:
-  serviceAccount: service-account
   volumes:
   - name: secretvolume
     secret:
       secretName: mysqlcontainer
   containers:
   - name: secretcontainer
-    image: gcr.io/perceptive-day-252709/springbootgcp
+    image: gcr.io/perceptive-day-252709/gcpApp
     env:
       - name: SECRETS_USER
         valueFrom:
@@ -23,4 +22,3 @@ spec:
             name: mysqlcontainer
             key: password
   restartPolicy: Never
-  

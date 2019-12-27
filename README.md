@@ -21,28 +21,11 @@ clone the repo !!!
 tiago_sllater@cloudshell:~/Spring-Boot-GCP (perceptive-day-252709)$ gcloud app deploy ./src/main/appengine/app.yaml
 
 
-
-run the script ./create 
-
-kubectl exec -it mysql /bin/bash
-
-root@mysql:/# mysql -u root -D mysql -proot_password
+connect mysql : mysql -h mysql -u your_user -D your_database -pyour_password
 
 
-kubectl exec -it mysql-client /bin/ash 
- 
-mysql -h mysql -u your_user -D your_database -pyour_password
 
-
-kubectl exec mysql -it -- env | grep MYSQL_ROOT_PASSWORD
- 
- 
-kubectl exec mysql -it -- env | grep SECRETS_USER
- 
-
-kubectl exec mysql -it -- env | grep SECRETS_PASSWORD
-
-
+create secret : 
 
 kubectl get secret mysqlcontainer -o yaml
 apiVersion: v1
@@ -63,52 +46,21 @@ metadata:
 type: Opaque
 
 
-
-mvn spring-boot:run -Dspring.cloud.kubernetes.secrets.paths=/api/v1/namespaces/default/secrets/mysqlcontainer
-
-mvn spring-boot:run -Dspring.cloud.kubernetes.secrets.name=mysqlcontainer
-
-mvn clean package appengine:deploy
-
-mvn appengine:devserver
-
-mvn appengine:run
-
-mvn appengine:deploy
-
-
-//////////////////////////////////////////////////////////////////////////////////////////////////
-Follow the first 5 step given in this link
-
-https://cloud.google.com/sql/docs/mysql/connect-container-engine
-
-change database configuration in your application
-
-hostname: 127.0.0.1
-port: 3306 or your mysql port
-username: proxyuser
-
-should be same as link step - 3
-
-mvn package -Dmaven.test.skip=true
-Create File with name "Dockerfile" and below content
-
-FROM openjdk:8
-COPY target/SpringBootWithDB-0.0.1-SNAPSHOT.jar /app.jar
-EXPOSE 8080/tcp
-ENTRYPOINT ["java", "-jar", "/app.jar"]
-
+ # DOCKER 
+ 
 docker build -t  gcr.io/perceptive-day-252709/springbootgcp:v1
 docker build -t gcr.io//springbootdb-java:v1 .
 
 docker run -ti --rm -p 8080:8080 gcr.io//springbootdb-java:v1
 
 gcloud docker -- push gcr.io//springbootdb-java:v1
+ 
 
-Follow the 6th step given in link and create yaml file
+kubectl run [deployment name] --image=gcr.io/perceptive-day-252709/springbootgcp:latest --port 8080
 
-kubectl create -f cloudsql_deployment.yaml
+kubectl get pods
+kubectl get deployment
 
-run kubectl get deployment and copy name of deployment
+kubectl exec -ti [pod name -> secretenv] env
 
-kubectl expose deployment --type=LoadBalancer
+kubectl expose deployment [deployment name] --type=LoadBalancer --port 80 --target-port 8080

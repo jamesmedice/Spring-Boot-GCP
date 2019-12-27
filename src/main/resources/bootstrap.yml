@@ -21,11 +21,11 @@ spring:
                 name: mysqlcontainer
                 namespace: default
         gcp:
-            project-id: perceptive-day-252709
+            project-id: ${PROJECT_ID:qwiklabs-gcp-01f0cd088e25ac6d}
             credentials:
                 location: classpath:key.json
             sql:
                 enabled: true
                 database-type: mysql
                 database-name: marketplace
-                instance-connection-name: perceptive-day-252709:us-central1:mysqlcontainer      
+                instance-connection-name: ${PROJECT_ID:qwiklabs-gcp-01f0cd088e25ac6d}:us-central1:mysqlcontainer      
