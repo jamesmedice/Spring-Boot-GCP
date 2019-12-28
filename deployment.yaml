@@ -24,6 +24,19 @@ spec:
           ports: 
             - 
               containerPort: 8080
+        - name: cloudsql-proxy
+          image: gcr.io/cloudsql-docker/gce-proxy:1.11
+          command: ["/cloud_sql_proxy",
+                    "-instances=qwiklabs-gcp-6d7ec82202db14c9:us-central1:marketplace=tcp:3306",
+                    "-credential_file=/secrets/cloudsql/credentials.json"]
+          volumeMounts:
+            - name: secrets-volume
+              mountPath: /secrets/cloudsql
+              readOnly: true
+      volumes:
+        - name: secrets-volume
+          secret:
+            secretName: cloudsql-instance-credentials
 
 ---
 apiVersion: v1
