@@ -1,21 +1,80 @@
 --- 
-apiVersion: extensions/v1beta1
+apiVersion: v1
 kind: Deployment
 metadata: 
   labels: 
-    app: app
-  name: app
+    app: app-gke
+  name: app-gke
 spec: 
+  selector:
+    matchLabels:
+      app: app-gke
+  replicas: 4
   template: 
     metadata: 
       labels: 
-        app: app
+        app: app-gke
     spec: 
       containers: 
         - 
           env: ~
-          image: gcr.io/qwiklabs-gcp-01f0cd088e25ac6d/app
-          name: app
+          image: gcr.io/qwiklabs-gcp-6d7ec82202db14c9/app-gke:latest
+          imagePullPolicy: Always
+          name: app-gke
           ports: 
             - 
               containerPort: 8080
+
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: app-gke
+spec:
+  volumes:
+  - name: secretvolume
+    secret:
+      secretName: mysqlcontainer
+  containers:
+  - name: secretcontainer
+    image: gcr.io/qwiklabs-gcp-6d7ec82202db14c9/app-gke
+    env:
+      - name: SECRETS_USER
+        valueFrom:
+          secretKeyRef:
+            name: mysqlcontainer
+            key: username
+      - name: SECRETS_PASSWORD
+        valueFrom:
+          secretKeyRef:
+            name: mysqlcontainer
+            key: password
+  restartPolicy: Never
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: secretenv
+data:
+  application.yml: |+
+    server:
+      port: 8080
+    datasource:
+      driverClassName: com.mysql.cj.jdbc.Driver
+      username: ${SECRETS_USER}
+      password: ${SECRETS_PASSWORD}
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: app-gke
+spec:
+  selector:
+    app: app-gke
+  ports:
+    - port: 80
+      targetPort: 8080
+      protocol: TCP
+  type: LoadBalancer

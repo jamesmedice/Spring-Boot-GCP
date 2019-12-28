@@ -2,6 +2,5 @@
 kubectl delete secret mysqlcontainer
 rm secret.yaml
 
-kubectl delete -f configmap.yaml
-kubectl delete -f pod.yaml
+kubectl delete -f deployment.yaml
  
