@@ -6,29 +6,35 @@ metadata:
     app: app-gke
   name: app-gke
 spec: 
+  replicas: 4
   selector:
     matchLabels:
       app: app-gke
-  replicas: 4
   template: 
     metadata: 
       labels: 
         app: app-gke
     spec: 
       containers: 
-        - 
-          env: ~
-          image: gcr.io/qwiklabs-gcp-6d7ec82202db14c9/app-gke:latest
+        - name: app-gke
+          image: gcr.io/[PROJECT ID]/app-gke:latest
           imagePullPolicy: Always
-          name: app-gke
           ports: 
-            - 
-              containerPort: 8080
+            - containerPort: 8080
+          env:
+            - name: SECRETS_USER
+              valueFrom:
+                secretKeyRef:
+                  name: mysqlcontainer
+                  key: username
+            - name: SECRETS_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: mysqlcontainer
+                  key: password           
         - name: cloudsql-proxy
           image: gcr.io/cloudsql-docker/gce-proxy:1.11
-          command: ["/cloud_sql_proxy",
-                    "-instances=qwiklabs-gcp-6d7ec82202db14c9:us-central1:marketplace=tcp:3306",
-                    "-credential_file=/secrets/cloudsql/credentials.json"]
+          command: ["/cloud_sql_proxy", "-instances=qwiklabs-gcp-3c9d8f314a12d81c:us-central1:mysqlcontainer=tcp:3306", "-credential_file=/secrets/cloudsql/credentials.json"]
           volumeMounts:
             - name: secrets-volume
               mountPath: /secrets/cloudsql
@@ -37,46 +43,6 @@ spec:
         - name: secrets-volume
           secret:
             secretName: cloudsql-instance-credentials
-
----
-apiVersion: v1
-kind: Pod
-metadata:
-  name: app-gke
-spec:
-  volumes:
-  - name: secretvolume
-    secret:
-      secretName: mysqlcontainer
-  containers:
-  - name: secretcontainer
-    image: gcr.io/qwiklabs-gcp-6d7ec82202db14c9/app-gke
-    env:
-      - name: SECRETS_USER
-        valueFrom:
-          secretKeyRef:
-            name: mysqlcontainer
-            key: username
-      - name: SECRETS_PASSWORD
-        valueFrom:
-          secretKeyRef:
-            name: mysqlcontainer
-            key: password
-  restartPolicy: Never
-
----
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: secretenv
-data:
-  application.yml: |+
-    server:
-      port: 8080
-    datasource:
-      driverClassName: com.mysql.cj.jdbc.Driver
-      username: ${SECRETS_USER}
-      password: ${SECRETS_PASSWORD}
 
 ---
 apiVersion: v1

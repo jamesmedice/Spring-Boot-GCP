@@ -13,7 +13,7 @@ spring:
             config:
                 enableApi: true
                 enabled: true
-                name: invoice
+                name: app-gke
                 namespace: default
                 sources:
                  - name: secretenv
@@ -21,11 +21,11 @@ spring:
                 name: mysqlcontainer
                 namespace: default
         gcp:
-            project-id: ${PROJECT_ID:qwiklabs-gcp-6d7ec82202db14c9}
+            project-id: ${PROJECT_ID:qwiklabs-gcp-3c9d8f314a12d81c}
             credentials:
                 location: classpath:key.json
             sql:
                 enabled: true
                 database-type: mysql
                 database-name: marketplace
-                instance-connection-name: ${PROJECT_ID:qwiklabs-gcp-6d7ec82202db14c9}:us-central1:mysqlcontainer      
+                instance-connection-name: ${PROJECT_ID:qwiklabs-gcp-3c9d8f314a12d81c}:us-central1:mysqlcontainer      

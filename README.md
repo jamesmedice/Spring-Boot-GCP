@@ -9,17 +9,9 @@ Credentials saved to file: [/tmp/tmp.dG9nLliG41/application_default_credentials.
 
 
 
-
-
-
 cluster info :  gcloud container clusters get-credentials  spring-boot-cluster  --zone europe-north1-a
 
 gcloud config set project [PROJECT_ID]
-
-clone the repo !!!
-
-tiago_sllater@cloudshell:~/Spring-Boot-GCP (perceptive-day-252709)$ gcloud app deploy ./src/main/appengine/app.yaml
-
 
 connect mysql : mysql -h mysql -u your_user -D your_database -pyour_password
 
@@ -48,19 +40,17 @@ type: Opaque
 
  # DOCKER 
  
-docker build -t  gcr.io/perceptive-day-252709/springbootgcp:v1
-docker build -t gcr.io//springbootdb-java:v1 .
+docker build -t  gcr.io/[poject]/app-gke:v1
 
-docker run -ti --rm -p 8080:8080 gcr.io//springbootdb-java:v1
+docker-credential-gcr configure-docker
 
-gcloud docker -- push gcr.io//springbootdb-java:v1
- 
+docker tag app-gke gcr.io/[poject]/app-gke
 
-kubectl run [deployment name] --image=gcr.io/perceptive-day-252709/springbootgcp:latest --port 8080
+docker push gcr.io/[poject]/app-gke
 
-kubectl get pods
-kubectl get deployment
 
-kubectl exec -ti [pod name -> secretenv] env
+gcloud container clusters create kuben --zone us-central1-f \
+--machine-type=n1-standard-2  --enable-autorepair \
+--enable-autoscaling --max-nodes=10 --min-nodes=1
 
-kubectl expose deployment [deployment name] --type=LoadBalancer --port 80 --target-port 8080
+gcloud container clusters list
