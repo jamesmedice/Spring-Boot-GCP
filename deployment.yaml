@@ -17,7 +17,7 @@ spec:
     spec: 
       containers: 
         - name: app-gke
-          image: gcr.io/[PROJECT ID]/app-gke:latest
+          image: gcr.io/qwiklabs-gcp-3c9d8f314a12d81c/app-gke:latest
           imagePullPolicy: Always
           ports: 
             - containerPort: 8080
