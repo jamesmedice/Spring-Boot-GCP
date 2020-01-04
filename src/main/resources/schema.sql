@@ -1,5 +1,6 @@
+create database IF NOT EXISTS marketplace;
 
-USE marketplace;
+USE marketplace; 
 
 		
 CREATE TABLE IF NOT EXISTS invoice (
